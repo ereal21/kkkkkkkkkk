@@ -114,19 +114,17 @@ class Categories(Database.BASE):
     allow_referral_rewards = Column(Boolean, nullable=False, default=True)
     item = relationship("Goods", back_populates="category")
 
-    def __init__(self, name: str, parent_name: str | None = None,
-                 allow_discounts: bool = True, allow_referral_rewards: bool = True):
+    def __init__(
+        self,
+        name: str,
+        parent_name: str | None = None,
+        allow_discounts: bool = True,
+        allow_referral_rewards: bool = True,
+    ):
         self.name = name
         self.parent_name = parent_name
         self.allow_discounts = allow_discounts
         self.allow_referral_rewards = allow_referral_rewards
-
-    item = relationship("Goods", back_populates="category")
-
-    def __init__(self, name: str, parent_name: str | None = None, allow_discounts: bool = True):
-        self.name = name
-        self.parent_name = parent_name
-        self.allow_discounts = allow_discounts
 
 
 class Goods(Database.BASE):
